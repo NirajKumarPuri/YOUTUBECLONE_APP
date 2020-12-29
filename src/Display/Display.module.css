@@ -1,0 +1,50 @@
+.container {
+  width: 100%;
+  display: flex;
+  padding-top: 20px;
+  
+}
+.imgbox{
+  width: 30%;
+  margin-right: 10px;
+}
+.img{
+  width: 100%;
+}
+.content {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+.inputbox {
+  width: 79%;
+}
+.inputtext {
+  width: 100%;
+  height: 32px;
+  font-size: 20px;
+}
+.Iconbox {
+  width: 20%;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 0.5px black;
+  background-color: whitesmoke;
+}
+@media (min-width: 768px) {
+  .content {
+    width: 60%;
+    margin-top: 20px;
+  }
+  .imgbox{
+    width: 20%;
+    margin-right: 40px;
+  }
+}
+@media(min-width:1024px){
+  .content{
+    margin-top: 50px;
+  }
+}
