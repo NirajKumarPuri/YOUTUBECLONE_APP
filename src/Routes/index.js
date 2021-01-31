@@ -7,7 +7,7 @@ const Routes = () => {
     <Router>
       <Switch>
         <Route exact path="/" component={Fetchdata} />
-        <Route exact path="/:id" component={Video} />
+        <Route  path="/:id" component={Video} />
       </Switch>
     </Router>
   );

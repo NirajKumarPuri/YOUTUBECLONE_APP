@@ -20,6 +20,9 @@ const Video =()=> {
         console.log(result.items);
       });
   };
+  const cleardata=()=>{
+    setdata([])
+  }
    
   return (
     <div className={styles.container}>
@@ -33,6 +36,7 @@ const Video =()=> {
                 descrip={carddata.snippet.title}
                 Videoid={typeof carddata.id=='object'? carddata.id.videoId : carddata.id}
                 publish={carddata.snippet.publishedAt}
+                callback={cleardata}
                 Item={data}
               />
             );

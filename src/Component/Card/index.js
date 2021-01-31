@@ -3,14 +3,18 @@ import styles from './card.module.css';
 import { useHistory } from 'react-router-dom';
 import Video from '../../Video';
 import { useEffect } from 'react';
-const Card=({ imgurl, descrip, Videoid , publish,Item,Card,Imgbox,Img,Parabox,Para})=> {
+const Card=({ imgurl, descrip, Videoid , publish,Item,Card,Imgbox,Img,Parabox,Para,callback})=> {
   const history = useHistory();
   useEffect(()=>{
 console.log('helo')
   },[])
   const handleclick = () => {
-    console.log('handleclic')
+    console.log('handleclic',Videoid)
     const date=new Date(publish)
+   
+    if(typeof callback==='function'){
+      callback()
+    }
     history.push(`../${Videoid}`, { id: Videoid, Descrip:descrip ,PublishedAt: date,Arry:Item });
   };
   return (
