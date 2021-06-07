@@ -3,7 +3,7 @@ import styles from './card.module.css';
 import { useHistory } from 'react-router-dom';
 import Video from '../../Video';
 import { useEffect } from 'react';
-const Card=({ imgurl, descrip, Videoid , publish,Item,Card,Imgbox,Img,Parabox,Para,callback})=> {
+const Card=({ imgurl, descrip, Videoid , publish,Item,Card,Imgbox,Img,Parabox,Para,callback,like,dislike})=> {
   const history = useHistory();
   useEffect(()=>{
 console.log('helo')
@@ -15,7 +15,7 @@ console.log('helo')
     if(typeof callback==='function'){
       callback()
     }
-    history.push(`../${Videoid}`, { id: Videoid, Descrip:descrip ,PublishedAt: date,Arry:Item });
+    history.push(`../${Videoid}`, { id: Videoid, Descrip:descrip ,PublishedAt: date,Arry:Item,Like:like,Dislike:dislike });
   };
   return (
     <div  className={`${styles.container} ${Card}`} onClick={handleclick}>
@@ -30,3 +30,19 @@ console.log('helo')
   );
 };
 export default Card;
+// var hamster={
+//   stomach:[],
+//   eat: function (food) {
+//     this.stomach.push(food)
+//   }
+// }
+// var hardy={
+
+// }
+// hardy.__proto__=hamster
+// var tommy={
+
+// }
+// tommy.__proto__=hamster
+// hardy.eat("apple")
+// console.log(hardy.stomach,tommy.stomach)

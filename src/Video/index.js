@@ -45,7 +45,12 @@ const Video =()=> {
       <div className={styles.content}>
       <iframe className={styles.Video} src={`https://youtube.com/embed/${Location.state.id}`} />
       <p className={styles.descrip}>{Location.state.Descrip} </p>
+      <div className={styles.show}>
       <p className={styles.Publish}>{Location.state.PublishedAt.toLocaleString()} </p>
+      <p className={styles.like}>{Location.state.Like}</p>
+      <p className={styles.like}>{Location.state.Dislike}</p>
+
+      </div>
       </div>
       <div className={styles.content1}>
       {Location.state.Arry.filter((item)=>{return item.id!==Location.state.id}).map((carddata)=>{

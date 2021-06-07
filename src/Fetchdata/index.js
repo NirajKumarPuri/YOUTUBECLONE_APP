@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Fetch.module.css';
 import Display from '../Display/index.js';
 import Card from '../Component/Card/index.js';
+import { useHistory } from 'react-router-dom';
 class Fetchdata extends React.Component {
   constructor(props) {
     super(props);
@@ -9,9 +10,10 @@ class Fetchdata extends React.Component {
       arry: []
     };
   }
+  
   componentDidMount() {
     fetch(
-      'https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=15&key=AIzaSyDlHgoVXhs4TRUXfe9wFGle2lGD45dDlqs'
+      'https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&maxResults=15&key=AIzaSyDlHgoVXhs4TRUXfe9wFGle2lGD45dDlqs'
     )
       .then((response) => {
         return response.json();
@@ -34,10 +36,16 @@ class Fetchdata extends React.Component {
         console.log(result.items);
       });
   };
+  handleclick=()=>{
+this.props.history.push(`../Graph`,{Statistics:this.state.arry.map(item=>item.statistics)})
+  }
   render() {
     return (
       <div>
         <Display searchdata={this.DisplaySearch} />
+        <div>
+          <button onClick={this.handleclick}>Graph</button>
+        </div>
         <div className={styles.container}>
           {this.state.arry.map((carddata) => {
             console.log(carddata)
@@ -48,6 +56,8 @@ class Fetchdata extends React.Component {
                 Videoid={typeof carddata.id=='object'? carddata.id.videoId : carddata.id}
                 publish={carddata.snippet.publishedAt}
                 Item={this.state.arry}
+                like={carddata.statistics.likeCount}
+               dislike={carddata.statistics.dislikeCount}
               />
             );
           })}
